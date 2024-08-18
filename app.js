@@ -7,7 +7,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
-const MongoDBStore = require("connect-mongo")(session)
+const MongoStore = require("connect-mongo")
 const flash = require('connect-flash');
 const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override');
@@ -45,11 +45,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(mongoSanitize())
+const secret = process.env.SECRET
 
-const store = MongoDBStore({
+const store = MongoStore.create({
     url: dbUrl,
-    secret:'thisshouldbeabettersecret!',
-    touchAfter: 24 * 60 *60
+    touchAfter: 24 * 60 *60,
+    crypto:{
+        secret
+    }
 })
 store.on("error", function (e){
 
@@ -57,7 +60,7 @@ store.on("error", function (e){
 const sessionConfig = {
     store, 
     name: 'session',
-    secret: 'thisshouldbeabettersecret!',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
