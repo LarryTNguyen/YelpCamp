@@ -22,7 +22,25 @@ A full-stack web application that allows users to register, log in, and share th
 
 ## Demo
 
-[Include a link to a live demo or screenshots of the application]
+![Home Screen](_demoPics/HomeScreen.png)
+
+This is the home screen of the application
+
+![List of all uploaded campgrounds](_demoPics/campgrounds_index.png)
+
+This is the index page of campgrounds. This lists all the campgrounds uploaded so far. This page also uses the MapBox API to geocache the location of the campground and places it on an interactive map.
+
+![Registering a new user page](_demoPics/register.png)
+
+This is the page to register a new user into the system. The user cannot create, edit, and delete campgrounds or reviews until they register and log in.
+
+![Creating a new campground](_demoPics/campgrounds_new.png)
+
+This is the page that shows when a user creates a new campground. Each field beside the image field needs to have a value before the user can upload their campsite into the site.
+
+![Looking at a specific campsite](_demoPics/campgrounds_show.png)
+
+This shows a specific campground with the description, price, and location. The page utilizes the MapBox API to visualize the geographical location of the campground. Additionally, the page has a section for other users to leave a rating and review.
 
 ## Technologies Used
 
